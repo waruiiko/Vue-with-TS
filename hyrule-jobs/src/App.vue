@@ -1,6 +1,8 @@
 <template>
   <div class="app">
     hello hyrule
+    <!-- <jobs-list  /> -->
+    <JobsList :jobs="jobs" />
     <!-- <h1>{{ name }}-{{ age }}</h1>
     <input v-model="anotherName" />
     <input v-model="anotherAge" />
@@ -13,10 +15,11 @@
 import { defineComponent, reactive,ref,toRefs } from "vue";
 import './types/Job'
 import Job from "./types/Job";
+import JobsList from "./components/JobsList.vue";
 
 export default defineComponent({
   name: "App",
-  components: {},
+  components: { JobsList },
   setup() {
     //reactive
     // const state = reactive({
@@ -42,7 +45,7 @@ export default defineComponent({
       {title:'D',location:'AddressD',salary:40000,id:'4'},
       {title:'E',location:'AddressE',salary:50000,id:'5'}
     ])
-
+    return {jobs}
   },
   // data() {
   //   return {
