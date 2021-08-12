@@ -2,6 +2,7 @@
   <div class="app">
     hello hyrule
     <!-- <jobs-list  /> -->
+    <button>order by title</button>
     <JobsList :jobs="jobs" />
     <!-- <h1>{{ name }}-{{ age }}</h1>
     <input v-model="anotherName" />
@@ -12,10 +13,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive,ref,toRefs } from "vue";
-import './types/Job'
+import { defineComponent, reactive, ref, toRefs } from "vue";
+import "./types/Job";
 import Job from "./types/Job";
+import OrderTerm from "./types/OrderTerm";
 import JobsList from "./components/JobsList.vue";
+import OrderTerm from "./types/OrderTerm";
 
 export default defineComponent({
   name: "App",
@@ -38,14 +41,21 @@ export default defineComponent({
     // const anotherAge = ref('')
 
     // return {name, age, anotherName, anotherAge}
+
     const jobs = ref<Job[]>([
-      {title:'A',location:'AddressA',salary:10000,id:'1'},
-      {title:'B',location:'AddressB',salary:20000,id:'2'},
-      {title:'C',location:'AddressC',salary:30000,id:'3'},
-      {title:'D',location:'AddressD',salary:40000,id:'4'},
-      {title:'E',location:'AddressE',salary:50000,id:'5'}
-    ])
-    return {jobs}
+      { title: "A", location: "AddressA", salary: 10000, id: "1" },
+      { title: "B", location: "AddressB", salary: 20000, id: "2" },
+      { title: "C", location: "AddressC", salary: 30000, id: "3" },
+      { title: "D", location: "AddressD", salary: 40000, id: "4" },
+      { title: "E", location: "AddressE", salary: 50000, id: "5" },
+    ]);
+
+    const order = ref<OrderTerm>('title');
+    const handleClick = (term: OrderTerm) => {
+      order.value = term
+    };
+
+    return { jobs };
   },
   // data() {
   //   return {
