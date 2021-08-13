@@ -1,9 +1,14 @@
 <template>
   <div class="app">
-    hello hyrule
-    <!-- <jobs-list  /> -->
-    <button>order by title</button>
-    <JobsList :jobs="jobs" />
+    <header>
+      <div class="order">
+        <!-- <jobs-list  /> -->
+        <button @click="handleClick('title')">order by title</button>
+        <button @click="handleClick('salary')">order by salary</button>
+        <button @click="handleClick('location')">order by location</button>
+      </div>
+    </header>
+    <JobsList :jobs="jobs" :order="order" />
     <!-- <h1>{{ name }}-{{ age }}</h1>
     <input v-model="anotherName" />
     <input v-model="anotherAge" />
@@ -14,11 +19,9 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref, toRefs } from "vue";
-import "./types/Job";
 import Job from "./types/Job";
 import OrderTerm from "./types/OrderTerm";
 import JobsList from "./components/JobsList.vue";
-import OrderTerm from "./types/OrderTerm";
 
 export default defineComponent({
   name: "App",
@@ -50,12 +53,12 @@ export default defineComponent({
       { title: "E", location: "AddressE", salary: 50000, id: "5" },
     ]);
 
-    const order = ref<OrderTerm>('title');
+    const order = ref<OrderTerm>("title");
     const handleClick = (term: OrderTerm) => {
-      order.value = term
+      order.value = term;
     };
 
-    return { jobs };
+    return { jobs, order, handleClick };
   },
   // data() {
   //   return {
@@ -79,4 +82,20 @@ export default defineComponent({
 </script>
 
 <style>
+header {
+  text-align: center;
+}
+header .order {
+  margin-top: 20px;
+}
+button {
+  margin: 0 10px;
+  color: #1195c9;
+  border: 3px solid #1195c9;
+  background: #d5f0ff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
 </style>
