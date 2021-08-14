@@ -46,11 +46,11 @@ export default defineComponent({
     // return {name, age, anotherName, anotherAge}
 
     const jobs = ref<Job[]>([
-      { title: "A", location: "AddressA", salary: 10000, id: "1" },
-      { title: "B", location: "AddressB", salary: 20000, id: "2" },
-      { title: "C", location: "AddressC", salary: 30000, id: "3" },
-      { title: "D", location: "AddressD", salary: 40000, id: "4" },
-      { title: "E", location: "AddressE", salary: 50000, id: "5" },
+      { title: "xiaoming", location: "xiaoming", salary: 10000, id: "1" },
+      { title: "ss", location: "SS", salary: 60000, id: "2" },
+      { title: "C", location: "ZC", salary: 30000, id: "3" },
+      { title: "m", location: "m", salary: 70000, id: "4" },
+      { title: "E", location: "GE", salary: 50000, id: "5" },
     ]);
 
     const order = ref<OrderTerm>("title");
